@@ -1,21 +1,16 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router'
-require('./bootstrap');
-
-// window.Vue = require('vue');
-
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 /*   Router   */   
-import exampleComponent from './components/ExampleComponent.vue' 
+import index from './components/index.vue' 
 Vue.use(VueRouter)
 const routes = [{
     path: '/',
-    component: exampleComponent
+    component: index
   },
 ]
 const router = new VueRouter({
   routes,
-  mode: 'hash'
+  mode: 'history'
 })
 /*   end Router   */  
 

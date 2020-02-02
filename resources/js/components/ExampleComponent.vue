@@ -14,11 +14,11 @@
                     </div>
                     <hr>
                     <div class="list-grid">
-                        <div class="item-list" v-for="(item, index) in this.initData" :key="index">
-                            <img src="../../../public/img/Kiew_Kai_Ka-1170x780-qa-94.jpg" height="130" width="192" alt="">
+                        <div v-show="initData.length >0" class="item-list" v-for="(item, index) in this.initData" :key="index">
+                            <img :src="LinkGooglePoto(item)" height="130" width="192" alt="no img" onload>
                             <h4>{{item.name}}</h4>
                             <span>{{item.formatted_address}}</span><br>
-                            <a href="#">Link Google map</a>
+                            <a href="#" @click="LinkGoogleMap(item)">Link Google map</a>
                         </div>
                     </div>
                 </div>
@@ -39,15 +39,25 @@
     export default {
         data() {
             return {
-                initData: null
+                initData: []
             }
         },
         mounted() {
+            console.log(keyApi);
             axios.get(`api/getRestaurantsGoogle`, this.config).then(response => {
-                console.log('res', response.data.results);
                 this.initData = response.data.results
             })
-        }
+        },
+        methods: {
+            LinkGoogleMap(item){
+                window.open(`https://www.google.com/maps/search/?api=1&query=${item.name}&query_place_id=${item.place_id}`)
+            },
+            LinkGooglePoto(item){
+             if(item.photos){
+               return  `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${item.photos[0].photo_reference}&key=AIzaSyB_6G_5em5sdsUtStU9MsRmqAMGNEq9BDA`
+             }
+            }
+        },
     }
 
 </script>

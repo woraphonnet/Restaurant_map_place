@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Mitr:200,600" rel="stylesheet">
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/restaurants.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">        
     <style>
         body{
             margin: 0;
@@ -20,6 +21,9 @@
 </head>
 
 <body>
+    <script>
+        const keyApi = "{{$key}}";
+    </script>
     <div id="app">
         <router-view></router-view>
     </div>

@@ -11,7 +11,8 @@ class RestaurantsController
     public function getRestaurantsGoogle()
     {
         $client = new Client();
-        $url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Bangsue&key=AIzaSyB_6G_5em5sdsUtStU9MsRmqAMGNEq9BDA";
+        $key = env('APP_GOOGLE_MAPS');
+        $url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+nontaburi&key=$key";
         $response = $client->request( 'GET', $url);
         return $response->getBody();
     }
