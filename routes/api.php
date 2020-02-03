@@ -17,4 +17,6 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::get('getRestaurantsGoogle', 'api\RestaurantsController@getRestaurantsGoogle');   
+Route::get('getRestaurantsGoogle', 'api\RestaurantsController@index');   
+Route::get('getRestaurantsGoogle/{text}', 'api\RestaurantsController@search');   
+Route::get('getaAddressType', 'api\RestaurantsController@typeAddress');   
